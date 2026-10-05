@@ -26,7 +26,7 @@ After a warm-up call, each of 100 rounds runs the four scenarios in random order
 
 - Prefill and decode time come from Ollama's `prompt_eval_duration` and `eval_duration`; tokens per second is generated tokens divided by decode time.
 - `qwen_bench.py` grades each answer with simple rules: 50 points for meeting the length requirement and 50 points for keyword coverage.
-- `judge_results.py` can re-grade the answers with Llama 3.1 8B as a judge (specificity 40, consistency 30, readability 30).
+- `judge_results.py` re-graded the answers with Llama 3.1 8B as a judge (specificity 40, consistency 30, readability 30).
 - `plot_json.py` combines quality and speed into a quality-weighted efficiency score: (score / 100)³ × 100 / (prefill + decode + 0.5 s).
 
 **Results** (mean per scenario, from [`results/exponential_performance_dashboard.png`](01_prefill_decode_profiling/results/exponential_performance_dashboard.png)):
@@ -38,7 +38,7 @@ After a warm-up call, each of 100 rounds runs the four scenarios in random order
 | Long in / short out | 0.52 | 0.69 | 119.70 | 93.6 | 51.82 |
 | Long in / long out | 0.47 | 3.95 | 117.84 | 92.8 | 19.23 |
 
-- In these tests, output length dominated latency: decoding a long answer took up to 3.95 s, while reading even the long prompt took about 0.5 s.
+- In these tests, output length dominated latency: decoding a long answer took about 3.95 s on average, while reading even the long prompt took about 0.5 s.
 - Throughput stayed in a narrow band (118–137 tokens/s) and was slightly lower with long inputs.
 
 **Limitations.** One prompt topic, one model and one GPU. The rule-based quality score is a rough proxy (it counts keywords and length), and the model has no live weather data, so factual accuracy is not measured.
