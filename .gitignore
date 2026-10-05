@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Raw results produced by the scripts (not tracked)
+*.json
+*.csv
+# Third-party quiz text used as the prompt in experiment 02 (not redistributed)
+02_temperature_reasoning/prompts/detective_case.txt

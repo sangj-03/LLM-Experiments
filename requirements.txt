@@ -1,0 +1,8 @@
+ollama
+pandas
+numpy
+matplotlib
+seaborn
+tqdm
+tiktoken
+psutil
